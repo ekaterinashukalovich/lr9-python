@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Добавить валюту</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+
+<h1>Добавление валюты</h1>
+
+<ul class="list-unstyled mb-4">
+{% for item in navigation %}
+    <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+{% endfor %}
+</ul>
+
+<form method="GET" action="/currency/add">
+    <div class="mb-3">
+        <label class="form-label">NumCode</label>
+        <input type="text" name="num_code" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">CharCode</label>
+        <input type="text" name="char_code" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Название</label>
+        <input type="text" name="name" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Курс (value)</label>
+        <input type="number" name="value" step="0.0001" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Nominal</label>
+        <input type="number" name="nominal" class="form-control" required>
+    </div>
+
+    <button class="btn btn-primary">Добавить</button>
+</form>
+
+</body>
+</html>

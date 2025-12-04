@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Изменить курс валюты</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+
+<h1>Редактирование курса {{ currency.name }} ({{ currency.char_code }})</h1>
+
+<ul class="list-unstyled mb-4">
+{% for item in navigation %}
+    <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+{% endfor %}
+</ul>
+
+<form method="GET" action="/currency/update">
+    <input type="hidden" name="id" value="{{ currency.id }}">
+
+    <div class="mb-3">
+        <label class="form-label">Новый курс</label>
+        <input type="number" step="0.0001" name="value" value="{{ currency.value }}" class="form-control" required>
+    </div>
+
+    <button class="btn btn-success">Сохранить</button>
+</form>
+
+</body>
+</html>

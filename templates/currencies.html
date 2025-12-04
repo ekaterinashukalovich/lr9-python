@@ -1,0 +1,46 @@
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Курсы валют</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+
+<h1>Курсы валют</h1>
+
+<ul class="list-unstyled mb-4">
+{% for item in navigation %}
+    <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+{% endfor %}
+</ul>
+
+<a class="btn btn-primary mb-3" href="/currency/add">Добавить валюту</a>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-light">
+        <tr>
+            <th>ID</th>
+            <th>Код</th>
+            <th>Название</th>
+            <th>Курс</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for c in currencies %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.char_code }}</td>
+            <td>{{ c.name }}</td>
+            <td>{{ c.value }}</td>
+            <td>
+                <a class="btn btn-sm btn-success" href="/currency/update?id={{ c.id }}">Изменить</a>
+                <a class="btn btn-sm btn-danger" href="/currency/delete?id={{ c.id }}">Удалить</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
